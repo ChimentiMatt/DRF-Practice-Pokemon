@@ -1,11 +1,7 @@
 <script setup>
-import UserList from './components/UserList.vue'
-import ItemList from './components/ItemList.vue'
-import Login from './components/Login.vue'
 </script>
 
 <template>
-  <!-- <Login /> -->
   <RouterView />
 </template>
 

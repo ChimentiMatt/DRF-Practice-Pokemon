@@ -13,7 +13,6 @@ class TrainerSerializer(ModelSerializer):
 
 @api_view(['GET'])
 def trainer_detail(request):
-    print('request', request)
     user = request.user
     serializer = TrainerSerializer(user)
     return Response(serializer.data, status=status.HTTP_200_OK)

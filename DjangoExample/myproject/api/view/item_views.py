@@ -12,10 +12,8 @@ def item_list(request):
 
 @api_view(['GET'])
 def trainers_items(request):
-    print('\n\n', request.user,  '\n\n')
     trainer = request.user
     items = Item.objects.all().values('id', 'name', 'description')
-    print('\n\n', trainer, items, '\n\n')
     items = items.filter(trainer=trainer)
     items = list(items)
     return JsonResponse(items, safe=False)

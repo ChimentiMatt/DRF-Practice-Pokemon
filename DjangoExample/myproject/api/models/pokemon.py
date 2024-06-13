@@ -1,14 +1,14 @@
 from django.db import models
 from .item import Item
 from .species import Species
-from django.contrib.auth.models import User
+from accounts.models import Trainer
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=100)
     level = models.IntegerField(default=1)
     experience_points = models.IntegerField(default=0)
     description = models.TextField()
-    trainer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pokemon_items')
+    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE, related_name='pokemon_items')
     gender = models.CharField(max_length=10)
     happiness = models.IntegerField(default=1)
     species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name='species')

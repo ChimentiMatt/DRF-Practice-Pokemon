@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 // import Home from '@/views/Home.vue';
 import Login from '../src/views/Login.vue';
+import SignUp from '../src/views/SignUp.vue';
 import Home from '../src/views/Home.vue';
 import Dashboard from '../src/views/Dashboard.vue';
 
@@ -14,11 +15,5 @@ const router = createRouter({
   history: createWebHistory(''),
   routes,
 });
-
-// router.beforeEach((to, from, next) => {
-//     const isAuthenticated = !!localStorage.getItem('token'); // Adjust according to your authentication logic
-//     if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' });
-//     else next();
-//   });
 
 export default router;

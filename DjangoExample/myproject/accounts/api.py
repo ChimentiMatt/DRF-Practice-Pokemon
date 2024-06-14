@@ -2,7 +2,7 @@ from django.http import JsonResponse
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-# from .forms import SignupForm
+from .forms import SignupForm
 
 @api_view(['GET'])
 def me(request):
@@ -12,24 +12,26 @@ def me(request):
         'email': request.user.email,
     })
 
-# @api_view(['POST'])
-# @authentication_classes([])
-# @permission_classes([])
-# def signup(request):
-#     data = request.data
-#     message = 'success'
 
-#     form = SignupForm({
-#         'email': data.get('email'),
-#         'name': data.get('name'),
-#         'password1': data.get('password1'),
-#         'password2': data.get('password2'),
-#     })
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
+def signup(request):
+    print('\n in sign up \n',)
+    data = request.data
+    message = 'success'
 
-#     if form.is_valid():
-#         form.save()
+    form = SignupForm({
+        'email': data.get('email'),
+        'name': data.get('name'),
+        'password1': data.get('password1'),
+        'password2': data.get('password2'),
+    })
+
+    if form.is_valid():
+        form.save()
     
-#     else:
-#         message = form.errors.as_json()
+    else:
+        message = form.errors.as_json()
 
-#     return JsonResponse({'status': message})
+    return JsonResponse({'status': message})

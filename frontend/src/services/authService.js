@@ -3,8 +3,8 @@ import { useTrainerStore } from '../stores/trainerStore';
 
 export const login = async (username, password) => {
   try {
-    const response = await api.post('/login/', {
-      username,
+    const response = await api.post('/accounts/login/', {
+      'email': username,
       password
     });
     localStorage.setItem('access_token', response.data.access);

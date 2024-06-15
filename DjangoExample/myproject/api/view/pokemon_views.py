@@ -12,7 +12,6 @@ def pokemon_list(request):
 
 @api_view(['GET'])
 def trainers_pokemon(request):
-    print('\nin trainer\n')
     trainer = request.user
     pokemon = Pokemon.objects.all().values('id', 'name', 'description')
     pokemon = pokemon.filter(trainer=trainer)

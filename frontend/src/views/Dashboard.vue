@@ -36,7 +36,7 @@
     },
     methods: {
       async handCall() {
-        this.items = await geTrainerItems()
+        // this.items = await geTrainerItems()
         this.pokemon = await getPokemon()
       },
 

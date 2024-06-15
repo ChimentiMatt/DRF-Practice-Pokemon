@@ -6,6 +6,7 @@
       <input v-model="password" type="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
+    {{ message }}
   </div>
 </template>
 
@@ -26,9 +27,15 @@ export default {
   },
   methods: {
     async handleLogin() {
-      let attempt = await login(this.username, this.password)
-      if (attempt.status === 200) this.$router.push({ name: 'Dashboard' });
-      else this.message = 'Error on loggin attempt'
+      login(this.username, this.password)
+      .then(respons => {
+        this.$router.push({ name: 'Dashboard' });
+        console.log('success')
+      })
+      .catch(error => {
+        console.log('error', error)
+        this.message = error.message
+      })
     },
   }
 };

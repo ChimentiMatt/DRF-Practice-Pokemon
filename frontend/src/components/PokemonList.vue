@@ -9,7 +9,7 @@
 
 <script>
 
-import { geTrainerPokemon } from '../services/pokemonService';
+import { getTrainersPokemon } from '../services/pokemonService';
 
 export default {
   name: 'PokemonList',
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     async handleCall() {
-      this.pokemon = await geTrainerPokemon();
+      this.pokemon = await getTrainersPokemon();
     }
   }
 };

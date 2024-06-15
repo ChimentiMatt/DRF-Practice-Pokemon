@@ -4,7 +4,7 @@ export const getPokemon
  = async () => {
   let token = localStorage.getItem('token')
   try {
-    const response = await api.get('/pokemon/', {
+    const response = await api.get('api/pokemon/', {
       headers: {
         'Authorization': `Token ${token}`
       }
@@ -16,11 +16,11 @@ export const getPokemon
   }
 };
 
-export const geTrainerPokemon
+export const getTrainersPokemon
  = async () => {
   let token = localStorage.getItem('token')
   try {
-    const response = await api.get('/trainer-pokemon/', {
+    const response = await api.get('api/trainers-pokemon/', {
       headers: {
         'Authorization': `Token ${token}`
       }

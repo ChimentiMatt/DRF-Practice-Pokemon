@@ -2,30 +2,25 @@ import api from '../api';
 import { useTrainerStore } from '../stores/trainerStore';
 
 export const login = async (username, password) => {
-  try {
-    const response = await api.post('/accounts/login/', {
-      'email': username,
-      password
-    });
-    localStorage.setItem('access_token', response.data.access);
-    localStorage.setItem('refresh_token', response.data.refresh);
-    setUser()
-    return response;
 
-  } catch (error) {
-    console.error('Error logging in:', error);
-    return error;
-  }
+  const response = await api.post('/accounts/login/', {
+    email: username,
+    password
+  });
+
+  localStorage.setItem('access_token', response.data.access);
+  localStorage.setItem('refresh_token', response.data.refresh);
+  setUser();
+  return response;
 };
 
 export const setUser = async () => {
   const trainerStore = useTrainerStore()
   try {
-      const response = await api.get('/auth/trainer/', {
+      const response = await api.get('/api/trainer-details/', {
     });
     trainerStore.trainerObj = response.data
-    trainerStore.name = response.data.username
-    console.log(trainerStore.trainerObj)
+    trainerStore.name = response.data.name
     return response.data;;
   } catch (error) {
     console.error(error);

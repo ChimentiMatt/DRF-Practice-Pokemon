@@ -3,15 +3,22 @@ import { defineStore } from 'pinia'
 
 export const useTrainerStore = defineStore('trainer', {
     state: () => ({
-        trainerObj: null,
+        user: null,
         name: '',
+        email: '',
+        id: null
     }),
     actions: {
-        // increment() {
-        //     this.counter++
-        // },
+        setUser(userData) {
+            this.user = userData;
+            this.name = userData.name;
+            this.email = userData.email;
+            this.id = userData.id;
+            console.log(this.user )
+        },
+        clearUser() {
+            this.user = null;
+            localStorage.removeItem('user');
+        },
     },
-    getters: {
-        // doubleCounter: (state) => state.counter * 2,
-    },
-})
+});

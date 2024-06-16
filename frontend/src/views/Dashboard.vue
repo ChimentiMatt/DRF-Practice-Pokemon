@@ -1,8 +1,9 @@
 <template>
     <div>
       <h1>dashboard</h1>
-      <div v-if="trainerStore.trainerObj">
-        <p>Welcome {{ trainerStore.name }}</p>
+      <div v-if="trainerStore.user">
+        <p>Name {{ trainerStore.name }}</p>
+        <p>email: {{ trainerStore.email }}</p>
         <div v-for="item in items">{{ item.name }}</div>
       </div>
 
@@ -31,7 +32,7 @@
     },
 
     mounted() {
-        console.log(this.trainerStore)
+        console.log(this.trainerStore.name)
         this.handCall()
     },
     methods: {

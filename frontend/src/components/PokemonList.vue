@@ -2,7 +2,9 @@
   <div>
     <h1>Pokemon List</h1>
     <ul>
-      <li v-for="poke in pokemon" :key="poke.id">{{ poke.name }}</li>
+      <li v-for="poke in pokemon" :key="poke.id">Name:{{ poke.name }}</li>
+      <li v-for="poke in pokemon" :key="poke.id">Species:{{ poke.species__name }}</li>
+      <li v-for="poke in pokemon" :key="poke.id">Type:{{ poke.poke_type__name }}</li>
     </ul>
   </div>
 </template>

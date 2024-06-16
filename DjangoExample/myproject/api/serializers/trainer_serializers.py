@@ -9,11 +9,5 @@ from rest_framework.serializers import ModelSerializer
 class TrainerSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
-
-# @api_view(['GET'])
-# def trainer_detail(request):
-#     user = request.user
-#     serializer = TrainerSerializer(user)
-#     return Response(serializer.data, status=status.HTTP_200_OK)
+        fields = '__all__'
 

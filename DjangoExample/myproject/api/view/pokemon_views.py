@@ -13,8 +13,9 @@ def pokemon_list(request):
 @api_view(['GET'])
 def trainers_pokemon(request):
     trainer = request.user
-    pokemon = Pokemon.objects.all().values('id', 'name', 'description')
+    pokemon = Pokemon.objects.all().values('id', 'name', 'description', 'species__name', 'poke_type__name', 'poke_type', 'species')
     pokemon = pokemon.filter(trainer=trainer)
+    # print('\n\n',pokemon)
     pokemon = list(pokemon)
     return JsonResponse(pokemon, safe=False)
 

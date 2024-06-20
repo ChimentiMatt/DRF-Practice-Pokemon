@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>dashboard</h1>
+      <h1>Trainer Page</h1>
       <div v-if="trainerStore.user">
         <p>Name {{ trainerStore.name }}</p>
         <p>email: {{ trainerStore.email }}</p>
@@ -15,13 +15,15 @@
   import { geTrainerItems } from '../services/itemsService';
   import { useTrainerStore } from '../stores/trainerStore';
   import { getPokemon } from '../services/pokemonService'
-  import PokemonList from '../components/PokemonList.vue'
+  import PokemonList from '../components/TrainresPokemonList.vue'
+  import Navbar from '../components/Navbar.vue';
 
   export default {
     setup() {
     },
     components: {
-      PokemonList
+      PokemonList, 
+      Navbar
     },
     data() {
       return{
@@ -32,7 +34,6 @@
     },
 
     mounted() {
-        console.log(this.trainerStore.name)
         this.handCall()
     },
     methods: {

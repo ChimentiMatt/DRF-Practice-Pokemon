@@ -4,6 +4,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .view.item_views import *
 from .view.pokemon_views import *
 from .view.tainer_view import *
+from .view.pokedex_view import *
 
 urlpatterns = [
     path('items/', item_list, name='item-list-create'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('pokemon/', pokemon_list, name='trainer-items'),
     path('trainers-pokemon/', trainers_pokemon, name='trainer-pokemon'),
     path('trainer-details/', trainer_details, name='trainer-details'),
+    path('pokedex/', pokedex_list, name='pokedex')
 ]

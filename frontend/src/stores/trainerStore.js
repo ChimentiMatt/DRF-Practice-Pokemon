@@ -14,7 +14,6 @@ export const useTrainerStore = defineStore('trainer', {
             this.name = userData.name;
             this.email = userData.email;
             this.id = userData.id;
-            console.log(this.user )
         },
         clearUser() {
             this.user = null;

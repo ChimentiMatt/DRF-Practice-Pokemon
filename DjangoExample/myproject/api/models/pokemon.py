@@ -8,7 +8,7 @@ class Pokemon(models.Model):
     name = models.CharField(max_length=100)
     level = models.IntegerField(default=1)
     experience_points = models.IntegerField(default=0)
-    description = models.TextField(default='')
+    description = models.TextField(default='A pokemon')
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE, null=True, blank=True, related_name='pokemon_items')
     gender = models.CharField(max_length=15, default='non-gendered')
     happiness = models.IntegerField(default=1)

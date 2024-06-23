@@ -11,7 +11,9 @@ from .view.species_view import *
 urlpatterns = [
     path('items/', item_list, name='item-list-create'),
     path('trainer-items/', trainers_items, name='trainer-items'),
-    path('pokemon/', pokemon_list, name='trainer-items'),
+    path('pokemon/', PokemonListView.as_view(), name='trainer-items'),
+    path('pokemon-count/<str:pokemon_name>/', PokemonCountView.as_view(), name='trainer-pokemon'),
+
     path('trainers-pokemon/', trainers_pokemon, name='trainer-pokemon'),
     path('trainer-details/', trainer_details, name='trainer-details'),
     path('pokedex/', pokedex_list, name='pokedex'),

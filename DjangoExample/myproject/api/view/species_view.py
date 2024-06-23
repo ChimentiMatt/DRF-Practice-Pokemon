@@ -10,7 +10,8 @@ from ..serializers.species_serializers import SpeciesSerializer
 @api_view(['GET'])
 def species_list(request):
     species = Species.objects.all().order_by('pokedex_id')
-    species_serializer = SpeciesSerializer(species, many=True)    
+    species_serializer = SpeciesSerializer(species, many=True)
+    print('\n\nhere', species)
     return JsonResponse(species_serializer.data, safe=False)
 
 @api_view(['GET'])
@@ -18,3 +19,4 @@ def species_detail(request, pokemon_name):
     species = get_object_or_404(Species, name=pokemon_name)
     serializer = SpeciesSerializer(species)
     return JsonResponse(serializer.data)
+

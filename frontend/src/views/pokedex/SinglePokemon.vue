@@ -7,8 +7,7 @@
     <p>{{ pokemonObject.evolution }}</p>
     <p>{{ pokemonObject.pokedex_id }}</p>
 
-    <h1>TODO Display how many trainers have this pokemon</h1>
-    <p>Number of trainers who caught: NA</p>
+    <p>Trainers who have caught: {{ pokemonCount }}</p>
   </div>
 </template>
 
@@ -16,19 +15,22 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { getSingleSpecies } from '../../services/speciesService'
+import { getPokemonCaughtCount } from '../../services/pokemonService'
 
 export default {
   name: 'SinglePokemon',
   setup() {
     const route = useRoute();
 
-    const pokemonName = ref('')
     const pokemonObject = ref({})
+    const pokemonCount = ref(0)
 
     const handleCall = async () => {
       pokemonObject.value = await getSingleSpecies(route.params.name)
-      console.log(pokemonObject.value);
-      console.log('test')
+      console.log('now', pokemonObject.value.name)
+      pokemonCount.value = await getPokemonCaughtCount(pokemonObject.value.name)
+      console.log(pokemonCount.value);
+      // console.log('test')
     };
 
     onMounted(() => {
@@ -37,6 +39,7 @@ export default {
 
     return {
       pokemonObject,
+      pokemonCount
     };
   },
 };

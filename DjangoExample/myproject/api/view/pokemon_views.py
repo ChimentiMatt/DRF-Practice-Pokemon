@@ -17,32 +17,14 @@ class PokemonListView(generics.ListAPIView):
         items_list = list(pokemon)
         return JsonResponse(items_list, safe=False)
 
-# def pokemon_list(request):
-#     pokemon = Pokemon.objects.all().values('id', 'name', 'description')
-#     items_list = list(pokemon)
-#     return JsonResponse(items_list, safe=False)
+class PokemonDetailView(generics.RetrieveAPIView):
+    queryset = Pokemon.objects.all()
+    serializer_class = PokemonSerializer
 
-def pokemon_detail(request, id):
-    pokemon = get_object_or_404(Pokemon, id=id)
-    serializer = PokemonSerializer(pokemon)
-    return JsonResponse(serializer.data)
-
-def pokemon_caught_count(request, pokemon_name):
-    pokemon = Pokemon.objects.all()
-    species = Species.objects.all()
-    species = species.filter(name=pokemon_name)
-    pokemon = pokemon.filter(name=pokemon_name)
-    serializer = PokemonSerializer(pokemon)
-    return JsonResponse(serializer.data)
-
-@api_view(['GET'])
-def trainers_pokemon(request):
-    trainer = request.user
-    pokemon = Pokemon.objects.all().values('id', 'name', 'description', 'species__name', 'poke_type__name', 'poke_type', 'species')
-    pokemon = pokemon.filter(trainer=trainer)
-    pokemon = list(pokemon)
-    return JsonResponse(pokemon, safe=False)
-
+    def retrieve(self, request, *args, **kwargs):
+        pokemon = self.get_object()
+        serializer = self.get_serializer(pokemon)
+        return JsonResponse(serializer.data)
 
 class PokemonCountView(generics.ListAPIView):
     serializer_class = PokemonSerializer

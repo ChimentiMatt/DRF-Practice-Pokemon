@@ -14,7 +14,6 @@
   <script>
   import { geTrainerItems } from '../services/itemsService';
   import { useTrainerStore } from '../stores/trainerStore';
-  import { getTrainersPokemon } from '../services/pokemonService'
   import PokemonList from '../components/TrainresPokemonList.vue'
   import Navbar from '../components/Navbar.vue';
 
@@ -37,7 +36,6 @@
     },
     methods: {
       async handCall() {
-        // this.pokemon = await getTrainersPokemon()
       },
 
     }

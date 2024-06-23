@@ -14,7 +14,8 @@
 
 <script>
 
-import { getTrainersPokemon } from '../services/pokemonService';
+// import { getTrainersPokemon } from '../services/pokemonService';
+import { getTrainerPokemon } from '../services/trainerService';
 
 export default {
   data() {
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     async handleCall() {
-      this.trainersPokemon = await getTrainersPokemon();
+      this.trainersPokemon = await getTrainerPokemon();
       console.log(this.trainersPokemon)
     }
   }

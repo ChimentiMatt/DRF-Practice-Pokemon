@@ -5,6 +5,8 @@ from .view.item_views import *
 from .view.pokemon_views import *
 from .view.tainer_view import *
 from .view.pokedex_view import *
+from .view.pokemon_views import *
+from .view.species_view import *
 
 urlpatterns = [
     path('items/', item_list, name='item-list-create'),
@@ -12,5 +14,8 @@ urlpatterns = [
     path('pokemon/', pokemon_list, name='trainer-items'),
     path('trainers-pokemon/', trainers_pokemon, name='trainer-pokemon'),
     path('trainer-details/', trainer_details, name='trainer-details'),
-    path('pokedex/', pokedex_list, name='pokedex')
+    path('pokedex/', pokedex_list, name='pokedex'),
+    path('pokemon/<str:pokemon_name>/', pokemon_detail, name='pokemon_detail'),
+    path('species/', species_list, name='species'),
+    path('species/<str:pokemon_name>/', species_detail, name='species_detail'),
 ]

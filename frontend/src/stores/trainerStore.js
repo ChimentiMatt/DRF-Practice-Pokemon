@@ -1,4 +1,3 @@
-// store.js or store.ts
 import { defineStore } from 'pinia'
 
 export const useTrainerStore = defineStore('trainer', {

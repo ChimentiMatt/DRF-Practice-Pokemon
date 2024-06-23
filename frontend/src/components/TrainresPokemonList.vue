@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1>Trainers Pokemon</h1>
-    <p v-for="poke in trainersPokemon" :key="poke.id">Name: {{ poke.name }}</p>
-    <p v-for="poke in trainersPokemon" :key="poke.id">Species: {{ poke.species__name }}</p>
-    <p v-for="poke in trainersPokemon" :key="poke.id">Type: {{ poke.poke_type__name }}</p>
+    <div v-for="poke in trainersPokemon">
+      <p :key="poke.id">Name: {{ poke.name }}</p>
+      <p :key="poke.id">Species: {{ poke.species__name }}</p>
+      <p :key="poke.id">Type: {{ poke.poke_type__name }}</p> 
+      --
+    </div>
+
+    <p>---</p>
   </div>
 </template>
 
@@ -12,7 +17,6 @@
 import { getTrainersPokemon } from '../services/pokemonService';
 
 export default {
-  name: 'PokemonList',
   data() {
     return{
       trainersPokemon: [],
@@ -24,6 +28,7 @@ export default {
   methods: {
     async handleCall() {
       this.trainersPokemon = await getTrainersPokemon();
+      console.log(this.trainersPokemon)
     }
   }
 };

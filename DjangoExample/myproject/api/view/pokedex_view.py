@@ -8,5 +8,5 @@ from django.http import JsonResponse
 def pokedex_list(request):
     pokemon = Pokemon.objects.all().values('id', 'name', 'description', 'pokedex_id')
     items_list = list(pokemon)
-    items_list = sorted(items_list, key=lambda x: x['pokedex_id'])
+    items_list = sorted(items_list, key=lambda x: (x['pokedex_id'] is None, x['pokedex_id']))
     return JsonResponse(items_list, safe=False)

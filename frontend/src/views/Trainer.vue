@@ -14,7 +14,7 @@
   <script>
   import { geTrainerItems } from '../services/itemsService';
   import { useTrainerStore } from '../stores/trainerStore';
-  import { getPokemon } from '../services/pokemonService'
+  import { getTrainersPokemon } from '../services/pokemonService'
   import PokemonList from '../components/TrainresPokemonList.vue'
   import Navbar from '../components/Navbar.vue';
 
@@ -32,14 +32,12 @@
         trainerStore: useTrainerStore()
       }
     },
-
     mounted() {
         this.handCall()
     },
     methods: {
       async handCall() {
-        // this.items = await geTrainerItems()
-        this.pokemon = await getPokemon()
+        // this.pokemon = await getTrainersPokemon()
       },
 
     }
